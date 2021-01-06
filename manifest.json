@@ -1,0 +1,13 @@
+{
+    "name": "pixelshot",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "pixel art converter",
+    "browser_action": {
+        "default_icon": {
+            "19": "icon.png"
+        },
+        "default_title": "Pixel Shot",
+        "default_popup": "main.html"
+    }
+}
