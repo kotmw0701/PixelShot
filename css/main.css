@@ -1,0 +1,184 @@
+body, html {
+    width: 496px;
+    height: 438px;
+    font-size: 62.5%;
+}
+
+input {
+    outline: none;
+}
+
+input[type="text"], input[type="number"] {
+    background-color: white;
+    border: #707070 0.5px solid;
+    padding-left: 4px;
+    height: 24px;
+}
+
+input[type="button"], .menu-image-text {
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    min-width: 100px;
+    padding: 0 8px;
+    font-size: 1.1rem;
+    line-height: 24px;
+    text-align: center;
+    background-color: white;
+    border-radius: 12px;
+}
+
+label, .pallet-title {
+    font-size: 1.2rem;
+}
+
+.root {
+    width: 100%;
+    padding: 8px;
+    background-color: #E6E6E6;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 32px 32px 32px 270px 24px;
+    gap: 8px;
+    grid-template-areas:
+        "name pixelSize"
+        "maxSize pallet"
+        "optionButtons pallet"
+        "canvas canvas"
+        "menu menu";
+}
+
+.grid-container > div:nth-child(-n+5) {
+    padding: 4px 8px;
+    background-color: #C8C8C8;
+}
+
+.pallet {
+    grid-area: pallet;
+    background-color: green;
+}
+
+.pallet > input {
+    display: block;
+    margin-left: auto;
+}
+
+.pallet-wrapper {
+    overflow-x: auto;
+    max-width: 220px;
+}
+
+.pallet-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.pallet-list {
+    width: max-content;
+}
+
+.pallet-item {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    border: white 1px solid;
+}
+
+.name {
+    grid-area: name;
+}
+
+.name input {
+    width: 150px;
+    margin-left: 9px;
+}
+
+.pixelSize {
+    grid-area: pixelSize;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background-color: #009FE5;
+    height: 4px;
+    width: 80px;
+    border-radius: 2px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: white;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.pixelSize input[type="number"] {
+    width: 32px;
+    margin-left: 10px;
+}
+
+.maxSize {
+    grid-area: maxSize;
+}
+
+.maxSize input {
+    width: 72px;
+    margin-left: 9px;
+    font-size: 1.2rem;
+}
+
+.maxSize > input {
+    margin-left: 6px;
+}
+
+.optionButtons {
+    grid-area: optionButtons;
+}
+
+.optionButtons input {
+    display: inline-block;
+}
+
+.optionButtons input:first-child {
+    margin: 0 8px 0 6px;
+}
+
+.canvas {
+    grid-area: canvas;
+    background-color: black;
+}
+
+.canvas-drawer {
+    width: 480px;
+    height: 270px;
+}
+
+.menu {
+    grid-area: menu;
+    display: flex;
+    padding: 0 8px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.menu label {
+    margin-right: 8px;
+}
+
+.menu-download {
+    margin-left: auto;
+}
+
+.menu-download input {
+    background-color: #71C0FF;
+}
