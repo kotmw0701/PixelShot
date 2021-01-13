@@ -1,4 +1,6 @@
 body, html {
+    min-width: 496px;
+    min-height: 438px;
     font-size: 62.5%;
 }
 
@@ -31,8 +33,6 @@ label, .pallet-title {
 }
 
 .root {
-    max-width: 496px;
-    max-height: 438px;
     width: 100%;
     padding: 8px;
     background-color: #E6E6E6;
@@ -41,7 +41,7 @@ label, .pallet-title {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 32px 32px 32px 270px 32px;
+    grid-template-rows: 32px 32px 32px 270px 24px;
     gap: 8px;
     grid-template-areas:
         "name pixelSize"
