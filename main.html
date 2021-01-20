@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
 </head>
 
 <body class="root">
@@ -30,14 +31,14 @@
             <input type="button" value="グレースケール"><input type="button" value="カラーパレット">
         </div>
         <div class="canvas">
-            <canvas class="canvas-drawer"></canvas>
+            <canvas id="viewer"></canvas>
         </div>
         <div class="menu">
             <div class="menu-image">
-                <label class="menu-image-text">画像を選択<input type="file"></label><input type="button" value="スクリーンショット">
+                <label class="menu-image-text">画像を選択<input id="upload" type="file"></label><input id="screenshot" type="button" value="スクリーンショット">
             </div>
             <div class="menu-download">
-                <input type="button" value="保存">
+                <a id="download" href="#" download="download.png">保存</a>
             </div>
         </div>
     </div>
