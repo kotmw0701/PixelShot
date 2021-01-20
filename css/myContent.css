@@ -1,11 +1,13 @@
-body {
+.--open {
     position: relative;
     /* これ忘れるとおかしくなるかも */
+    overflow: hidden;
 }
 
 .picture {
     z-index: 10;
-    overflow: hidden;
+    margin: 0;
+    padding: 0;
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -16,6 +18,5 @@ body {
 }
 
 .picture > canvas {
-    width: 100%;
-    height: 100%;
+    position: absolute;
 }
