@@ -3,8 +3,14 @@ const inputElem = document.getElementById("slider");
 const currentValueElem = document.getElementById("inputNumber");
 
 const setCurrentValue = (val) => {
-    currentValueElem.value = val;
-    inputElem.value = val;
+    if (currentValueElem.value > 50) {
+        currentValueElem.value = 50;
+    } else if (currentValueElem.value < 1) {
+        currentValueElem.value = 1;
+    } else {
+        currentValueElem.value = val;
+        inputElem.value = val;
+    }
 }
 
 const rangeOnChange = (e) => {
