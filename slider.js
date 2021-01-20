@@ -5,7 +5,7 @@ const currentValueElem = document.getElementById("inputNumber");
 const setCurrentValue = (val) => {
     if (currentValueElem.value > 50) {
         currentValueElem.value = 50;
-        inputElem.value = val;
+        inputElem.value = 50;
     } else {
         currentValueElem.value = val;
         inputElem.value = val;
