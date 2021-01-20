@@ -21,10 +21,22 @@ window.onload = () => {
 // 画像表示
 const canvas = document.getElementById("canvas")
 
-document.getElementById('upload').addEventListener('change', (e) => {
-    let image = e.target.files[0];
-    let reader = new FileReader();
-    reader.addEventListener('load', () => {
-        chrome.storage.local.set({base64: reader.result}, () => {})
-    });
-})
+document.querySelector('input[type="file"]').onchange = function () {
+    let img = this.files[0]
+    let reader = new FileReader()
+    reader.readAsDataURL(img)
+    reader.onload = function () {
+        drawImage(reader.result)
+    }
+}
+
+function drawImage(url) {
+    let ctx = canvas.getContext('2d')
+    let image = new Image()
+    image.src = url
+    image.onload = () => {
+        canvas.width = image.width
+        canvas.height = image.height
+        ctx.drawImage(image, 0, 0)
+    }
+}
