@@ -15,7 +15,7 @@ input[type="text"], input[type="number"] {
     height: 24px;
 }
 
-input[type="button"], .menu-image-text {
+input[type="button"], .menu-image-text, #download {
     display: inline-block;
     cursor: pointer;
     height: 24px;
@@ -156,9 +156,9 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: black;
 }
 
-.canvas-drawer {
-    width: 480px;
-    height: 270px;
+#viewer {
+    max-width: 480px;
+    max-height: 270px;
 }
 
 .menu {
@@ -179,6 +179,8 @@ input[type="file"] {
     margin-left: auto;
 }
 
-.menu-download input {
+#download {
+    color: black;
+    text-decoration: none;
     background-color: #71C0FF;
 }

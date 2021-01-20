@@ -40,6 +40,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             trim.width = width;
             trim.height = height;
             trim.getContext('2d').drawImage(image, startX, startY, width, height, 0, 0, width, height);
+            chrome.storage.local.set({base64: trim.toDataURL('image/png')}, () => {})
 
             document.querySelector('.picture').remove();
             body.classList.remove('--open');
