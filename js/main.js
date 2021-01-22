@@ -25,10 +25,7 @@ document.getElementById('max_height').addEventListener(
 
 let updateImage = (base64) => {
     let image = new Image();
-    image.addEventListener('load', () => {
-        px.setFromImgSource(image.src);
-        px.draw().pixelate();
-    })
+    image.addEventListener('load', () => px.setFromImgSource(image.src).draw().pixelate())
     image.src = base64;
 }
 
