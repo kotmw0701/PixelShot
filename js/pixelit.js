@@ -172,12 +172,14 @@ class pixelit {
     this.ctx.webkitImageSmoothingEnabled = false;
     this.ctx.imageSmoothingEnabled = false;
 
-    
-    this.ctx.drawImage(this.drawfrom, 0, 0, scaledW, scaledH);
-    this.ctx.drawImage(this.drawto, 0, 0, scaledW, scaledH, 0, 0, this.drawfrom.width, this.drawfrom.height);
+    let copyCanvas = document.createElement('canvas');
+    copyCanvas.width = this.drawfrom.width;
+    copyCanvas.height = this.drawfrom.height;
+    copyCanvas.getContext('2d').drawImage(this.drawfrom, 0, 0, scaledW, scaledH);
+    this.ctx.drawImage(copyCanvas, 0, 0, scaledW, scaledH, 0, 0, this.drawfrom.width, this.drawfrom.height);
 
     //hack images with transparencies on top left corner
-    this.ctx.clearRect(0, 0, scaledW*1.05, scaledH*1.05);
+    // this.ctx.clearRect(0, 0, scaledW*1.05, scaledH*1.05);
     return this;
   }
 
