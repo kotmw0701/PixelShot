@@ -13,12 +13,12 @@
 <body class="root">
     <div class="grid-container">
         <div class="name">
-            <label>ファイル名<input type="text" placeholder="download.png"></label></div>
+            <label>ファイル名<input id="file_name" type="text" placeholder="download" value="download"></label></div>
         <div class="pixelSize">
             <label>ドットの大きさ<input type="range" max="50" min="1"></label><input type="number" max="50" min="1" value="1">
         </div>
         <div class="maxSize">
-            <label>最大サイズ<input type="number" max="256" min="1" placeholder="width"></label><input type="number" max="256" min="1" placeholder="height">
+            <label>最大サイズ<input id="max_width" type="number" min="1" placeholder="width"></label><input id="max_height" type="number" min="1" placeholder="height">
         </div>
         <div class="pallet">
             <span class="pallet-title">カラーパレット</span>

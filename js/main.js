@@ -2,9 +2,26 @@ let img = document.createElement('img');
 
 const px = new pixelit({ from: img, to: document.getElementById('viewer') });
 
+document.getElementById('download').addEventListener('click', e => {
+    let link = document.createElement('a');
+    link.download = `${document.getElementById('file_name').value || 'download'}.png`;
+    link.href = px.drawto.toDataURL('image/png')
+    link.click();
+})
 
+document.getElementById('file_name').addEventListener('change', e => e.target.value = e.target.value || 'download');
 
+let changeSize = (value, max) => {
+    if (value) return Math.min(value, max) 
+    else return max
+}
 
+document.getElementById('max_width').addEventListener(
+    'change',
+    e => px.setMaxWidth(e.target.valueAsNumber = changeSize(e.target.valueAsNumber, img.naturalWidth)).resizeImage());
+document.getElementById('max_height').addEventListener(
+    'change',
+    e => px.setMaxHeight(e.target.valueAsNumber = changeSize(e.target.valueAsNumber, img.naturalHeight)).resizeImage());
 
 let updateImage = (base64) => {
     let image = new Image();
