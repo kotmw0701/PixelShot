@@ -16,12 +16,17 @@ let changeSize = (value, max) => {
     else return max
 }
 
-document.getElementById('max_width').addEventListener(
-    'change',
-    e => px.setMaxWidth(e.target.valueAsNumber = changeSize(e.target.valueAsNumber, img.naturalWidth)).resizeImage());
-document.getElementById('max_height').addEventListener(
-    'change',
-    e => px.setMaxHeight(e.target.valueAsNumber = changeSize(e.target.valueAsNumber, img.naturalHeight)).resizeImage());
+document.getElementById('max_width').addEventListener('change', e => px.setMaxWidth(e.target.valueAsNumber = changeSize(e.target.valueAsNumber, img.naturalWidth)).resizeImage());
+document.getElementById('max_height').addEventListener('change', e => px.setMaxHeight(e.target.valueAsNumber = changeSize(e.target.valueAsNumber, img.naturalHeight)).resizeImage());
+
+document.getElementById('use_grayscale').addEventListener('change', e => {
+    if (e.target.checked) px.convertGrayscale();
+    else px.pixelate();
+})
+document.getElementById('use_palette').addEventListener('change', e => {
+    if (e.target.checked) px.convertPalette();
+    else px.pixelate();
+})
 
 let updateImage = (base64) => {
     let image = new Image();

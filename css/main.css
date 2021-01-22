@@ -30,6 +30,7 @@ input[type="button"], .menu-image-text, #download {
 
 label, .pallet-title {
     font-size: 1.2rem;
+    line-height: 24px;
 }
 
 .root {
@@ -145,10 +146,12 @@ input[type="range"]::-webkit-slider-thumb {
 
 .optionButtons input {
     display: inline-block;
+    vertical-align: -0.2em;
+    margin-right: 4px;
 }
 
-.optionButtons input:first-child {
-    margin: 0 8px 0 6px;
+.optionButtons label {
+    margin: 0 4px;
 }
 
 .canvas {
