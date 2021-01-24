@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="slider.js" defer></script>
 </head>
 
 <body class="root">
@@ -14,8 +15,8 @@
             <label>ファイル名<input type="text" placeholder="download.png"></label>
         </div>
         <div class="pixelSize">
-            <label>ドットの大きさ<input type="range" max="50" min="1" id="slider"></label><input type="number" max="50"
-                min="1" id="inputNumber">
+            <label>ドットの大きさ<input type="range" max="50" min="1" id="slider"></label><input type="number" max="50" min="1"
+                id="inputNumber">
         </div>
         <div class="maxSize">
             <label>最大サイズ<input type="number" max="256" min="1" placeholder="width"></label><input type="number"
@@ -46,14 +47,14 @@
         </div>
         <div class="menu">
             <div class="menu-image">
-                <label class="menu-image-text">画像を選択<input type="file" accept=".png, .jpg, .jpeg"></label><input type="button" value="スクリーンショット">
+                <label class="menu-image-text">画像を選択<input type="file" accept=".png, .jpg, .jpeg"></label><input
+                    type="button" value="スクリーンショット">
             </div>
             <div class="menu-download">
                 <input type="button" value="保存">
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="slider.js"></script>
 </body>
 
 </html>

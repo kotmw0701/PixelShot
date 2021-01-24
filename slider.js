@@ -1,14 +1,19 @@
 // スライダー
-const inputElem = document.getElementById("slider");
-const currentValueElem = document.getElementById("inputNumber");
+const sliderElem = document.getElementById("slider");
+const inputElem = document.getElementById("inputNumber");
 
 const setCurrentValue = (val) => {
-    if (currentValueElem.value > 50) {
-        currentValueElem.value = 50;
+    let array = ("" + val).split("");
+    if (array[0] == 0 || array[0] == "-") {
+        inputElem.value = 1;
+        sliderElem.value = 1;
+        array = [];
+    } else if (inputElem.value > 50) {
         inputElem.value = 50;
+        sliderElem.value = 50;
     } else {
-        currentValueElem.value = val;
         inputElem.value = val;
+        sliderElem.value = val;
     }
 }
 
@@ -17,10 +22,10 @@ const rangeOnChange = (e) => {
 }
 
 window.onload = () => {
+    sliderElem.addEventListener("input", rangeOnChange);
+    setCurrentValue(sliderElem.value);
     inputElem.addEventListener("input", rangeOnChange);
     setCurrentValue(inputElem.value);
-    currentValueElem.addEventListener("input", rangeOnChange);
-    setCurrentValue(currentValueElem.value);
 }
 
 // 画像表示
