@@ -58,7 +58,10 @@ document.getElementById('download').addEventListener('click', e => {
     link.click();
 })
 
-document.getElementById('file_name').addEventListener('change', e => e.target.value = e.target.value || 'download');
+document.getElementById('file_name').addEventListener('change', e => { 
+    if (/[\\\/:\*\?\"\<\>\|]/gi.test(e.target.value)) { alert('ファイル名に次の文字は使えません\n \\, /, :, *, ?, ", <, >, |'); e.target.value = 'download'; }
+    else e.target.value = e.target.value || 'download';
+});
 
 let changeSize = (value, max) => {
     if (value) return Math.min(value, max)
@@ -113,6 +116,7 @@ document.getElementById('screenshot').addEventListener('click', e => {
 
 document.getElementById('upload').addEventListener('change', e => {
     let image = e.target.files[0];
+    if (!/jpeg|png/gi.test(image.type)) { alert('.png .jpg .jpeg .jfif .pjpeg .pjp\n以外の拡張子は受け付けていません'); return; }
     let reader = new FileReader();
     reader.addEventListener('load', () => chrome.storage.local.set({ base64: reader.result }, () => console.log(`set base64: ${reader.result}`)));
     reader.readAsDataURL(image);
