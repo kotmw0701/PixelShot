@@ -61,7 +61,7 @@ document.getElementById('download').addEventListener('click', e => {
 document.getElementById('file_name').addEventListener('change', e => e.target.value = e.target.value || 'download');
 
 let changeSize = (value, max) => {
-    if (value) return Math.min(value, max) 
+    if (value) return Math.min(value, max)
     else return max
 }
 
@@ -105,10 +105,8 @@ let updateImage = (base64) => {
     image.src = base64;
 }
 
-window.addEventListener('load', e => { chrome.storage.local.get(['base64'], r => updateImage(r.base64)) }, false)
-
 document.getElementById('screenshot').addEventListener('click', e => {
-    chrome.tabs.captureVisibleTab(null, { format: "png" }, screenshotUrl => 
+    chrome.tabs.captureVisibleTab(null, { format: "png" }, screenshotUrl =>
         chrome.tabs.query({ active: true, currentWindow: true }, tabs => chrome.tabs.sendMessage(tabs[0].id, { base64: screenshotUrl }, msg => console.log(msg)))
     )
 }, false)

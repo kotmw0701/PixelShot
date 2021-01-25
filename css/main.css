@@ -31,7 +31,6 @@ input[type="button"], .pallet-add, .menu-image-text, #download {
 
 label, .pallet-title {
     font-size: 1.2rem;
-    line-height: 24px;
 }
 
 .root {
@@ -162,6 +161,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 .optionButtons label {
     margin: 0 4px;
+    line-height: 24px;
 }
 
 .canvas {
