@@ -1,4 +1,5 @@
 let img = document.createElement('img');
+let slider = document.getElementById('slider'), inputScale = document.getElementById('input_scale');
 let list = document.querySelector('.pallet-list');
 
 const px = new pixelit({ from: img, to: document.getElementById('viewer') });
@@ -63,6 +64,13 @@ let changeSize = (value, max) => {
     if (value) return Math.min(value, max) 
     else return max
 }
+
+slider.addEventListener('change', e => px.setScale(e.target.value).pixelate())
+slider.addEventListener('input', e => inputScale.value = e.target.value)
+inputScale.addEventListener('change', e => {
+    let param = e.target.valueAsNumber;
+    (param > 0 && param <= 50 ? px.setScale(slider.value = param) : px.setScale(slider.value = inputScale.value = param > 0 ? 50 : 1)).pixelate();
+});
 
 document.getElementById('max_width').addEventListener('change', e => px.setMaxWidth(e.target.valueAsNumber = changeSize(e.target.valueAsNumber, img.naturalWidth)).resizeImage());
 document.getElementById('max_height').addEventListener('change', e => px.setMaxHeight(e.target.valueAsNumber = changeSize(e.target.valueAsNumber, img.naturalHeight)).resizeImage());
