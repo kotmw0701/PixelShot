@@ -6,39 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/pixelit.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 
 <body class="root">
     <div class="grid-container">
         <div class="name">
-            <label>ファイル名<input type="text" placeholder="download.png"></label></div>
+            <label>ファイル名<input id="file_name" type="text" placeholder="download" value="download"></label></div>
         <div class="pixelSize">
-            <label>ドットの大きさ<input type="range" max="50" min="1"></label><input type="number" max="50" min="1" value="1">
+            <label>ドットの大きさ<input id="slider" type="range" max="50" min="1"></label><input id="input_scale" type="number" max="50" min="1" value="1">
         </div>
         <div class="maxSize">
-            <label>最大サイズ<input type="number" max="256" min="1" placeholder="width"></label><input type="number" max="256" min="1" placeholder="height">
+            <label>最大サイズ<input id="max_width" type="number" min="1" placeholder="width"></label><input id="max_height" type="number" min="1" placeholder="height">
         </div>
         <div class="pallet">
             <span class="pallet-title">カラーパレット</span>
             <div class="pallet-wrapper">
-                <div class="pallet-list">
-                    <div class="pallet-item" style="background-color: darkorange;"></div><div class="pallet-item" style="background-color: darkorchid;"></div><div class="pallet-item" style="background-color: deepskyblue;"></div><div class="pallet-item" style="background-color: gold;"></div><div class="pallet-item" style="background-color: magenta;"></div><div class="pallet-item" style="background-color: yellowgreen;"></div><div class="pallet-item" style="background-color: turquoise;"></div><div class="pallet-item" style="background-color: tomato;"></div><div class="pallet-item" style="background-color: palegreen;"></div><div class="pallet-item" style="background-color: lime;"></div>
-                </div>
-            </div><input type="button" value="追加">
+                <div class="pallet-list"></div>
+            </div><label class="pallet-add"><input id="color_input" type="color">追加</label>
         </div>
         <div class="optionButtons">
-            <input type="button" value="グレースケール"><input type="button" value="カラーパレット">
+            <label><input id="use_grayscale" type="checkbox">グレースケール</label><label><input id="use_palette" type="checkbox">カラーパレット</label>
         </div>
         <div class="canvas">
             <canvas id="viewer"></canvas>
         </div>
         <div class="menu">
             <div class="menu-image">
-                <label class="menu-image-text">画像を選択<input id="upload" type="file"></label><input id="screenshot" type="button" value="スクリーンショット">
+                <label class="menu-image-text">画像を選択<input id="upload" type="file" accept="image/png,image/jpeg"></label><input id="screenshot" type="button" value="スクリーンショット">
             </div>
             <div class="menu-download">
-                <a id="download" href="#" download="download.png">保存</a>
+                <input type="button" id="download" value="保存">
             </div>
         </div>
     </div>

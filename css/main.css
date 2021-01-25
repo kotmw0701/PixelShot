@@ -9,13 +9,14 @@ input {
 }
 
 input[type="text"], input[type="number"] {
+    font-size: 1.2rem;
     background-color: white;
     border: #707070 0.5px solid;
     padding-left: 4px;
     height: 24px;
 }
 
-input[type="button"], .menu-image-text, #download {
+input[type="button"], .pallet-add, .menu-image-text, #download {
     display: inline-block;
     cursor: pointer;
     height: 24px;
@@ -61,9 +62,18 @@ label, .pallet-title {
     background-color: green;
 }
 
-.pallet > input {
+.pallet label {
     display: block;
     margin-left: auto;
+    width: 64px;
+}
+
+.pallet input[type="color"] {
+    visibility: hidden;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
 }
 
 .pallet-wrapper {
@@ -121,7 +131,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .pixelSize input[type="number"] {
-    width: 32px;
+    width: 36px;
     margin-left: 10px;
 }
 
@@ -145,10 +155,13 @@ input[type="range"]::-webkit-slider-thumb {
 
 .optionButtons input {
     display: inline-block;
+    vertical-align: -0.2em;
+    margin-right: 4px;
 }
 
-.optionButtons input:first-child {
-    margin: 0 8px 0 6px;
+.optionButtons label {
+    margin: 0 4px;
+    line-height: 24px;
 }
 
 .canvas {
