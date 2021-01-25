@@ -15,7 +15,7 @@ input[type="text"], input[type="number"] {
     height: 24px;
 }
 
-input[type="button"], .menu-image-text, #download {
+input[type="button"], .pallet-add, .menu-image-text, #download {
     display: inline-block;
     cursor: pointer;
     height: 24px;
@@ -62,9 +62,18 @@ label, .pallet-title {
     background-color: green;
 }
 
-.pallet > input {
+.pallet label {
     display: block;
     margin-left: auto;
+    width: 64px;
+}
+
+.pallet input[type="color"] {
+    visibility: hidden;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
 }
 
 .pallet-wrapper {

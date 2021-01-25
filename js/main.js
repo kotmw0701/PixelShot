@@ -1,6 +1,54 @@
 let img = document.createElement('img');
+let list = document.querySelector('.pallet-list');
 
 const px = new pixelit({ from: img, to: document.getElementById('viewer') });
+
+let defaultPalette = [
+    [140, 143, 174],
+    [88, 69, 99],
+    [62, 33, 55],
+    [154, 99, 72],
+    [215, 155, 125],
+    [245, 237, 186],
+    [192, 199, 65],
+    [100, 125, 52],
+    [228, 148, 58],
+    [157, 48, 59],
+    [210, 100, 113],
+    [112, 55, 127],
+    [126, 196, 193],
+    [52, 133, 157],
+    [23, 67, 75],
+    [31, 14, 28]
+]
+
+let palette = []
+
+let addColorView = (color) => {
+    let span = document.createElement('span');
+    span.classList.add('pallet-item')
+    span.style.background = `rgb(${color[0]},${color[1]},${color[2]})`
+    span.addEventListener('click', e => {
+        palette = palette.filter(i => i.toString() !== color.toString())//span.style.background.match(/\d+/g,).toString()
+        chrome.storage.local.set({ palette: palette }, () => console.log(`remove palette`))
+        e.currentTarget.remove();
+    });
+    list.appendChild(span);
+}
+
+let initPalette = () => {
+    palette = defaultPalette.concat();
+    palette.forEach(c => addColorView(c))
+    chrome.storage.local.set({ palette: palette }, () => console.log(`init palette`))
+}
+
+window.addEventListener('load', e => {
+    chrome.storage.local.get(['base64'], r => updateImage(r.base64));
+    chrome.storage.local.get(['palette'], r => {
+        if (r.palette && r.palette.length) px.setPalette(palette = r.palette).getPalette().forEach(c => addColorView(c))
+        else initPalette();
+    });
+}, false)
 
 document.getElementById('download').addEventListener('click', e => {
     let link = document.createElement('a');
@@ -28,6 +76,21 @@ document.getElementById('use_palette').addEventListener('change', e => {
     else px.pixelate();
 })
 
+document.getElementById('color_input').addEventListener('change', e => {
+    let hex = e.target.value
+    palette.push([hex.slice(1, 3), hex.slice(3, 5), hex.slice(5, 7)].map(str => parseInt(str, 16)))
+    addColorView(palette.slice(-1)[0])
+    chrome.storage.local.set({ palette: palette }, () => console.log(`add palette`))
+})
+
+document.querySelector('.pallet-wrapper').addEventListener('mousewheel', e => {
+    if (e.deltaX === 0) {
+        e.stopPropagation();
+        e.preventDefault();
+        e.currentTarget.scrollBy(e.deltaY / 5, 0);
+    }
+}, false)
+
 let updateImage = (base64) => {
     let image = new Image();
     image.addEventListener('load', () => px.setFromImgSource(image.src).draw().pixelate())
@@ -50,5 +113,12 @@ document.getElementById('upload').addEventListener('change', e => {
 })
 
 chrome.storage.onChanged.addListener((changes, namespace) => {
-    if (namespace == 'local' && changes.base64.newValue) updateImage(changes.base64.newValue);
+    if (namespace == 'local') {
+        if (changes.base64 && changes.base64.newValue) updateImage(changes.base64.newValue);
+        else if (changes.palette && changes.palette.newValue) {
+            console.log(changes.palette.newValue)
+            px.setPalette(changes.palette.newValue.length ? changes.palette.newValue : defaultPalette);
+            if (!changes.palette.newValue.length) initPalette();
+        }
+    }
 })
