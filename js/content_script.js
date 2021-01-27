@@ -22,19 +22,31 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             context.fillRect(0, 0, canvas.width, canvas.height);
         }
 
+        let downFlag = false;
+
         canvas.addEventListener('mousedown', e => {
             startX = e.offsetX
             startY = e.offsetY
+            downFlag = true;
+        })
+
+        canvas.addEventListener('mousemove', e => {
+            if (!downFlag) return;
+            drawRect();
+            console.log('drag');
+            let width = e.offsetX - startX;
+            let height = e.offsetY - startY;
+            context.clearRect(startX, startY, width, height);
+            context.strokeRect(startX, startY, width, height);
         })
 
         canvas.addEventListener('mouseup', e => {
+            downFlag = false;
             let width = Math.abs(e.offsetX - startX);
             let height = Math.abs(e.offsetY - startY);
-            if (width < 5 || height < 5) return;
+            if (width < 5 || height < 5) {drawRect(); return;}
             startX = Math.min(startX, e.offsetX);
             startY = Math.min(startY, e.offsetY);
-            context.clearRect(startX, startY, width, height);
-            context.strokeRect(startX, startY, width, height);
 
             let trim = document.createElement('canvas');
             trim.width = width;

@@ -2,7 +2,7 @@ let img = document.createElement('img');
 let slider = document.getElementById('slider'), inputScale = document.getElementById('input_scale');
 let list = document.querySelector('.pallet-list');
 
-const px = new pixelit({ from: img, to: document.getElementById('viewer') });
+const px = new pixelit({ from: img, to: document.getElementById('viewer'), scale: 8 });
 
 let defaultPalette = [
     [140, 143, 174],
@@ -44,6 +44,7 @@ let initPalette = () => {
 }
 
 window.addEventListener('load', e => {
+    inputScale.value = slider.value = 8;
     chrome.storage.local.get(['base64'], r => updateImage(r.base64));
     chrome.storage.local.get(['palette'], r => {
         if (r.palette && r.palette.length) px.setPalette(palette = r.palette).getPalette().forEach(c => addColorView(c))
