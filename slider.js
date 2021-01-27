@@ -50,3 +50,5 @@ function drawImage(url) {
         ctx.drawImage(image, 0, 0)
     }
 }
+
+
