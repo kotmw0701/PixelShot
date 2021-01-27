@@ -59,8 +59,9 @@ document.getElementById('download').addEventListener('click', e => {
     link.click();
 })
 
-document.getElementById('file_name').addEventListener('change', e => { 
+document.getElementById('file_name').addEventListener('change', e => {
     if (/[\\\/:\*\?\"\<\>\|]/gi.test(e.target.value)) { alert('ファイル名に次の文字は使えません\n \\, /, :, *, ?, ", <, >, |'); e.target.value = 'download'; }
+    else if (e.target.value.length > 255) { alert('ファイル名は256文字内に収めてください'); e.target.value = ''; }
     else e.target.value = e.target.value || 'download';
 });
 
